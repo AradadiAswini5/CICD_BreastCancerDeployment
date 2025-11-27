@@ -1,0 +1,50 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  annotations:
+    run.googleapis.com/build-enable-automatic-updates: 'false'
+    run.googleapis.com/build-id: 4a61cdec-2895-4f37-ab90-eb343a664baf
+    run.googleapis.com/build-image-uri: asia-south1-docker.pkg.dev/breast-cancer-ai-prediction/cloud-run-source-deploy/breast-cancer-ai
+    run.googleapis.com/build-name: projects/187512367768/locations/asia-south1/builds/4a61cdec-2895-4f37-ab90-eb343a664baf
+    run.googleapis.com/build-source-location: gs://run-sources-breast-cancer-ai-prediction-asia-south1/services/breast-cancer-ai/1763803195.075548-c261c367bf514a8fa617b364db1539e6.zip#1763803197309251
+    run.googleapis.com/ingress: all
+    run.googleapis.com/ingress-status: all
+    run.googleapis.com/maxScale: '3'
+    run.googleapis.com/urls: '["https://breast-cancer-ai-187512367768.asia-south1.run.app","https://breast-cancer-ai-x5zzu4pkua-el.a.run.app"]'
+  labels:
+    cloud.googleapis.com/location: asia-south1
+    run.googleapis.com/satisfiesPzs: 'true'
+  name: breast-cancer-ai
+  namespace: '187512367768'
+spec:
+  template:
+    metadata:
+      annotations:
+        run.googleapis.com/client-name: gcloud
+        run.googleapis.com/client-version: 548.0.0
+        run.googleapis.com/startup-cpu-boost: 'true'
+      labels:
+        client.knative.dev/nonce: jsydshozvf
+        run.googleapis.com/startupProbeType: Default
+    spec:
+      containerConcurrency: 80
+      containers:
+      - image: asia-south1-docker.pkg.dev/breast-cancer-ai-prediction/cloud-run-source-deploy/breast-cancer-ai@sha256:e7f1ffb4b56c5720b40f4b762f6689a2385da5a95dcf00dd76209360445b7ba6
+        ports:
+        - containerPort: 8080
+          name: http1
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+        startupProbe:
+          failureThreshold: 1
+          periodSeconds: 240
+          tcpSocket:
+            port: 8080
+          timeoutSeconds: 240
+      serviceAccountName: 187512367768-compute@developer.gserviceaccount.com
+      timeoutSeconds: 300
+  traffic:
+  - latestRevision: true
+    percent: 100

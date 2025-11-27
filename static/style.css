@@ -1,0 +1,145 @@
+/* Global */
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+
+    /* PREMIUM GRADIENT BACKGROUND */
+    background: linear-gradient(135deg, #3a8dff, #6a5cff);  /* <-- Replace this line for other gradients */
+
+    min-height: 100vh;
+    padding: 0;
+    color: #333;
+}
+
+/* Semi-transparent card for glass effect */
+.card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    padding: 25px;
+    border-radius: 18px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    margin-bottom: 30px;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    padding: 25px;
+    color: white;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+.subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+/* Main area */
+.main-area {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+/* Form grid */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #003b99;
+}
+
+input[type="number"], select {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #bbb;
+}
+
+/* Primary Button */
+.primary-btn {
+    grid-column: span 2;
+    padding: 14px;
+    margin-top: 10px;
+    font-size: 1.1rem;
+    background: #0a5adf;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.primary-btn:hover {
+    background: #0849b8;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* Secondary Button */
+.secondary-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: white;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #0a5adf;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+/* Prediction Badge */
+.status-pill {
+    padding: 6px 14px;
+    background: #d8eaff;
+    color: #003b99;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+/* Error Box */
+.error-box {
+    background: #ffefef;
+    border-left: 5px solid #ff3b3b;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: rgba(255,255,255,0.8);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background: rgba(230,230,255,0.9);
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 15px;
+    margin-top: 20px;
+    color: white;
+    font-weight: 500;
+}

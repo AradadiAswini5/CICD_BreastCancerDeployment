@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="card result-card">
+
+    <h2>📊 Prediction Result</h2>
+
+    <p class="prediction-text">
+        Patient Status:  
+        <span class="status-pill">{{ status }}</span>
+    </p>
+
+    <h3>🧾 Submitted Patient Details</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Feature</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for col in feature_columns %}
+                <tr>
+                    <td>{{ col }}</td>
+                    <td>{{ values.get(col, '') }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ url_for('index') }}" class="secondary-btn">🔄 Predict Again</a>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>🏥 Breast Cancer Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <h1>🏥 Breast Cancer Status Prediction System</h1>
+        <p class="subtitle">AI-powered patient outcome prediction</p>
+    </header>
+
+    <!-- Main content -->
+    <main class="main-area">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2025 Clinical AI • Developed with ❤️ for Healthcare</p>
+    </footer>
+
+</body>
+</html>

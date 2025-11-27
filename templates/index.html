@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+
+    <h2 class="title">Breast Cancer Status Prediction</h2>
+
+    {% if errors %}
+        <div class="error-box">
+            <h3>Please correct the following:</h3>
+            <ul>
+                {% for e in errors %}
+                    <li>{{ e }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+
+    <form method="POST" action="/">
+        {% for col in feature_columns %}
+            <div class="form-group">
+                <label for="{{ col | replace(' ', '_') }}">{{ col }}</label>
+
+                {% if col in categorical_columns %}
+                    <!-- Dropdown for categorical columns -->
+                    <select
+                        id="{{ col | replace(' ', '_') }}"
+                        name="{{ col | replace(' ', '_') }}"
+                        required
+                    >
+                        <option value="">-- Select {{ col }} --</option>
+                        {% for opt in category_options[col] %}
+                            <option value="{{ opt }}"
+                                {% if previous_values.get(col) == opt %}selected{% endif %}>
+                                {{ opt }}
+                            </option>
+                        {% endfor %}
+                    </select>
+
+                {% else %}
+                    <!-- Numeric input -->
+                    <input
+                        type="number"
+                        step="1"
+                        id="{{ col | replace(' ', '_') }}"
+                        name="{{ col | replace(' ', '_') }}"
+                        value="{{ previous_values.get(col, '') }}"
+                        required
+                    >
+                {% endif %}
+            </div>
+        {% endfor %}
+
+        <button type="submit" class="submit-btn">Predict Status</button>
+    </form>
+</div>
+{% endblock %}
