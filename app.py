@@ -23,7 +23,7 @@ FEATURE_COLUMNS_UI = [
     "Marital Status",
     "T Stage",
     "N Stage",
-    "Tumor Size (1mm to 200mm)",
+    "Tumor Size (1 to 200)",
     "Progesterone Status",
     "Regional Node Examined (0 to 50)",
     "Reginol Node Positive (0 to 40)"
@@ -38,7 +38,7 @@ CATEGORICAL_COLUMNS = [
 ]
 
 NUMERIC_COLUMNS = [
-    "Tumor Size (1mm to 200mm)",
+    "Tumor Size (1 to 200)",
     "Regional Node Examined (0 to 50)",
     "Reginol Node Positive (0 to 40)",
 ]
