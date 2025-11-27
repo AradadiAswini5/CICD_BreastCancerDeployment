@@ -38,9 +38,9 @@ CATEGORICAL_COLUMNS = [
 ]
 
 NUMERIC_COLUMNS = [
-    "Tumor Size",
-    "Regional Node Examined",
-    "Reginol Node Positive",
+    "Tumor Size (1mm to 200mm)",
+    "Regional Node Examined (0 to 50)",
+    "Reginol Node Positive (0 to 40)",
 ]
 
 
@@ -112,9 +112,17 @@ def index():
         y_pred_encoded = model.predict(X_input)
         y_pred_label = target_encoder.inverse_transform(y_pred_encoded)[0]
 
+        # -------- Safe UI Labels --------
+        STATUS_MAPPING = {
+            "Alive": "Low Risk (Favorable Prognosis)",
+            "Dead": "High Risk (Requires Medical Attention)"
+        }
+
+        safe_status = STATUS_MAPPING.get(y_pred_label, "Unknown")
+
         return render_template(
             "result.html",
-            status=y_pred_label,
+            status=safe_status,
             feature_columns=FEATURE_COLUMNS_UI,
             values=raw_values,
         )
@@ -130,6 +138,5 @@ def index():
 
 
 if __name__ == "__main__":
-    import os
     port = int(os.environ.get("PORT", 8080))
     app.run(host="0.0.0.0", port=port)
